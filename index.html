@@ -42,6 +42,7 @@
                     clearInterval(interval);
                     currentLine++;
                     currentChar = 0;
+                    novelText.textContent += '\n'; // Add a new line for the next text.
                     document.addEventListener("click", displayNextChar);
                     document.addEventListener("keydown", displayNextChar);
                 }
