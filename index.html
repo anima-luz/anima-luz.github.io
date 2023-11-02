@@ -24,13 +24,19 @@
             .then(response => response.text())
             .then(text => {
                 novelLines = text.split('\n');
+                console.log("novelLines:");
+                console.log(novelLines);
                 displayNextLine();
             });
 
         // Function to display the next line of the novel.
         function displayNextLine() {
             if (currentLine < novelLines.length) {
+                console.log("currentLine:");
+                console.log(currentLine);
                 novelText.textContent += novelLines[currentLine] + '\n';
+                console.log("novelText.textContent");
+                console.log(novelText.textContent);
                 currentLine++;
             } else {
                 // Clear the content and make the page black.
