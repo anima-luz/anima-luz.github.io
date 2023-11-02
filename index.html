@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Typing Novel</title>
+    <title>Welcome to Beat Shop: BISHOP</title>
     <style>
         body {
             background-color: black;
@@ -18,37 +18,32 @@
         const novelText = document.getElementById("novel-text");
         let currentLine = 0;
         let novelLines = [];
-        let currentColumn = 0;
-        const typingInterval = 5; // Delay between typing each character (in milliseconds).
+        let currentChar = 0;
+        let interval;
 
         // Load the novel content from sentences.txt using a Fetch API.
         fetch('sentences.txt')
             .then(response => response.text())
             .then(text => {
                 novelLines = text.split('\n');
-                displayNextLine();
+                displayNextChar();
             });
 
-        // Function to display the next line of the novel with a typing effect.
-        function displayNextLine() {
+        // Function to display the next character of the novel with a delay.
+        function displayNextChar() {
             if (currentLine < novelLines.length) {
                 const line = novelLines[currentLine];
 
-                const typing = setInterval(function () {
-                    if (currentColumn <= line.length) {
-                        novelText.textContent = line.slice(0, currentColumn);
-                        currentColumn++;
-                    } else {
-                        clearInterval(typing);
-                        currentLine++;
-                        currentColumn = 0;
-
-                        // Add a new line for the next text without affecting the previous lines.
-                        novelText.textContent += '\n';
-
-                        setTimeout(displayNextLine, typingInterval);
-                    }
-                }, typingInterval);
+                if (currentChar < line.length) {
+                    novelText.textContent += line.charAt(currentChar);
+                    currentChar++;
+                    interval = setTimeout(displayNextChar, 10);
+                } else {
+                    // Line complete; wait for user interaction.
+                    clearInterval(interval);
+                    document.addEventListener("click", displayNextChar);
+                    document.addEventListener("keydown", displayNextChar);
+                }
             } else {
                 // Clear the content and make the page black when the user interacts.
                 document.addEventListener("click", clearContent);
