@@ -7,7 +7,7 @@
             background-color: black;
             color: lime;
             font-family: "Lucida Console", Monaco, monospace;
-            font-size: 20px;
+            font-size: 25px;
         }
     </style>
 </head>
@@ -24,17 +24,25 @@
             .then(response => response.text())
             .then(text => {
                 novelLines = text.split('\n');
+                console.log("novelLines:");
+                console.log(novelLines);
                 displayNextLine();
             });
 
         // Function to display the next line of the novel.
         function displayNextLine() {
             if (currentLine < novelLines.length) {
+                console.log("currentLine:");
+                console.log(currentLine);
                 novelText.textContent += novelLines[currentLine] + '\n';
+                console.log("novelText.textContent:");
+                console.log(novelText.textContent);
                 currentLine++;
             } else {
                 // Clear the content and make the page black.
                 novelText.textContent = '';
+                // Pop up a dialogue 
+                alert("!!! CONNECTION CLOSED !!!")
             }
         }
 
