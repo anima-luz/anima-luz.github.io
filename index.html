@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Beatshop: BISHOP</title>
+    <title>Typing Novel</title>
     <style>
         body {
             background-color: black;
@@ -18,37 +18,51 @@
         const novelText = document.getElementById("novel-text");
         let currentLine = 0;
         let novelLines = [];
+        let currentColumn = 0;
+        const typingInterval = 5; // Delay between typing each character (in milliseconds).
 
         // Load the novel content from sentences.txt using a Fetch API.
         fetch('sentences.txt')
             .then(response => response.text())
             .then(text => {
                 novelLines = text.split('\n');
-                console.log("novelLines:");
-                console.log(novelLines);
                 displayNextLine();
             });
 
-        // Function to display the next line of the novel.
+        // Function to display the next line of the novel with a typing effect.
         function displayNextLine() {
             if (currentLine < novelLines.length) {
-                console.log("currentLine:");
-                console.log(currentLine);
-                novelText.textContent += novelLines[currentLine] + '\n';
-                console.log("novelText.textContent:");
-                console.log(novelText.textContent);
-                currentLine++;
+                const line = novelLines[currentLine];
+
+                const typing = setInterval(function () {
+                    if (currentColumn <= line.length) {
+                        novelText.textContent = line.slice(0, currentColumn);
+                        currentColumn++;
+                    } else {
+                        clearInterval(typing);
+                        currentLine++;
+                        currentColumn = 0;
+
+                        // Add a new line for the next text without affecting the previous lines.
+                        novelText.textContent += '\n';
+
+                        setTimeout(displayNextLine, typingInterval);
+                    }
+                }, typingInterval);
             } else {
-                // Clear the content and make the page black.
-                novelText.textContent = '';
-                // Pop up a dialogue 
-                alert("!!! CONNECTION CLOSED !!!")
+                // Clear the content and make the page black when the user interacts.
+                document.addEventListener("click", clearContent);
+                document.addEventListener("keydown", clearContent);
             }
         }
 
-        // Add event listeners to capture user interactions (clicks and key presses).
-        document.addEventListener("click", displayNextLine);
-        document.addEventListener("keydown", displayNextLine);
+        // Function to clear the content and make the page black.
+        function clearContent() {
+            novelText.textContent = '';
+            document.body.style.backgroundColor = 'black';
+            document.removeEventListener("click", clearContent);
+            document.removeEventListener("keydown", clearContent);
+        }
     </script>
 </body>
 </html>
