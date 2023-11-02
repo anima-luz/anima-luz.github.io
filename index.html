@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Beat Shop: BISHOP</title>
+    <title>Character-by-Character Novel</title>
     <style>
         body {
             background-color: black;
             color: lime;
             font-family: "Lucida Console", Monaco, monospace;
-            font-size: 25px;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -16,8 +16,8 @@
 
     <script>
         const novelText = document.getElementById("novel-text");
-        let currentLine = 0;
         let novelLines = [];
+        let currentLine = 0;
         let currentChar = 0;
         let interval;
 
@@ -33,7 +33,6 @@
         function displayNextChar() {
             if (currentLine < novelLines.length) {
                 const line = novelLines[currentLine];
-
                 if (currentChar < line.length) {
                     novelText.textContent += line.charAt(currentChar);
                     currentChar++;
@@ -41,6 +40,8 @@
                 } else {
                     // Line complete; wait for user interaction.
                     clearInterval(interval);
+                    currentLine++;
+                    currentChar = 0;
                     document.addEventListener("click", displayNextChar);
                     document.addEventListener("keydown", displayNextChar);
                 }
@@ -55,8 +56,11 @@
         function clearContent() {
             novelText.textContent = '';
             document.body.style.backgroundColor = 'black';
+            currentLine = 0;
+            currentChar = 0;
             document.removeEventListener("click", clearContent);
             document.removeEventListener("keydown", clearContent);
+            displayNextChar();
         }
     </script>
 </body>
