@@ -48,7 +48,8 @@
                 }
             } else {
                 // Show endroll. 
-
+                displayEndroll();
+                
                 // Clear the content and make the page black when the user interacts.
                 document.addEventListener("click", clearContent);
                 document.addEventListener("keydown", clearContent);
@@ -74,7 +75,7 @@
                     displayNextLine();
                 });
             }
-                
+
         // Function to clear the content and make the page black.
         function clearContent() {
             novelText.textContent = '';
