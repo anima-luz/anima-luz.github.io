@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Character-by-Character Novel</title>
+    <title>Welcome to Beat Shop: BISHOP</title>
     <style>
         body {
             background-color: black;
             color: lime;
             font-family: "Lucida Console", Monaco, monospace;
-            font-size: 16px;
+            font-size: 25px;
         }
     </style>
 </head>
@@ -42,6 +42,7 @@
                     clearInterval(interval);
                     currentLine++;
                     currentChar = 0;
+                    novelText.textContent += '\n'; // Add a new line for the next text.
                     document.addEventListener("click", displayNextChar);
                     document.addEventListener("keydown", displayNextChar);
                 }
@@ -56,11 +57,12 @@
         function clearContent() {
             novelText.textContent = '';
             document.body.style.backgroundColor = 'black';
-            currentLine = 0;
-            currentChar = 0;
+            //currentLine = 0;
+            //currentChar = 0;
             document.removeEventListener("click", clearContent);
             document.removeEventListener("keydown", clearContent);
-            displayNextChar();
+            alert('!!! CONNECTION CLOSED !!!')
+            //displayNextChar();
         }
     </script>
 </body>
