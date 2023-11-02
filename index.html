@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Random Sentence App</title>
+    <title>Novel Reader</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: "Lucida Console", Monaco, monospace;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <div id="sentence-display"></div>
+    <pre id="novel-text"></pre>
 
-    <script src="app.js"></script>
+    <script>
+        const novelText = document.getElementById("novel-text");
+        let currentLine = 0;
+        let novelLines = [];
+
+        // Load the novel content from sentences.txt using a Fetch API.
+        fetch('sentences.txt')
+            .then(response => response.text())
+            .then(text => {
+                novelLines = text.split('\n');
+                displayNextLine();
+            });
+
+        // Function to display the next line of the novel.
+        function displayNextLine() {
+            if (currentLine < novelLines.length) {
+                novelText.textContent += novelLines[currentLine] + '\n';
+                currentLine++;
+            } else {
+                // When the last line is shown, close the tab.
+                window.close();
+            }
+        }
+
+        // Add event listeners to capture user interactions (clicks and key presses).
+        document.addEventListener("click", displayNextLine);
+        document.addEventListener("keydown", displayNextLine);
+    </script>
 </body>
 </html>
