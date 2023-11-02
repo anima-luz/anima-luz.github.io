@@ -12,13 +12,12 @@
     </style>
 </head>
 <body>
-    <pre id="novel-text"></p\re>
+    <pre id="novel-text"></pre>
 
     <script>
         const novelText = document.getElementById("novel-text");
         let currentLine = 0;
         let novelLines = [];
-        let typingDelay = 50; // Adjust this value to control typing speed (milliseconds).
 
         // Load the novel content from sentences.txt using a Fetch API.
         fetch('sentences.txt')
@@ -28,34 +27,15 @@
                 displayNextLine();
             });
 
-        // Function to display the next line of the novel with a typewriter effect.
+        // Function to display the next line of the novel.
         function displayNextLine() {
             if (currentLine < novelLines.length) {
-                const line = novelLines[currentLine];
-                let index = 0;
-
-                const typingInterval = setInterval(function () {
-                    if (index < line.length) {
-                        novelText.textContent += line[index];
-                        index++;
-                    } else {
-                        // Line complete; move to the next line.
-                        currentLine++;
-                        clearInterval(typingInterval);
-                        setTimeout(clearLine, typingDelay * 20); // Adjust delay for the next line.
-                    }
-                }, typingDelay);
+                novelText.textContent += novelLines[currentLine] + '\n';
+                currentLine++;
             } else {
                 // Clear the content and make the page black.
                 novelText.textContent = '';
-                document.body.style.backgroundColor = 'black';
             }
-        }
-
-        // Function to clear the line.
-        function clearLine() {
-            novelText.textContent = '';
-            setTimeout(displayNextLine, typingDelay * 10); // Adjust delay before displaying the next line.
         }
 
         // Add event listeners to capture user interactions (clicks and key presses).
