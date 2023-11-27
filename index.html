@@ -72,11 +72,22 @@
         // Function to display the content of endroll.txt.
         function displayEndroll() {
             endFlag = 1;
+
+            // Calculate the date one week ahead of the current date
+            const currentDate = new Date();
+            const oneWeekAhead = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+            // Format the date as you want (e.g., "YYYY-MM-DD")
+            const formattedDate = `${oneWeekAhead.getFullYear()}-${(oneWeekAhead.getMonth() + 1).toString().padStart(2, '0')}-${oneWeekAhead.getDate().toString().padStart(2, '0')}`;
+
             fetch('endroll.txt')
                 .then(response => response.text())
                 .then(text => {
                     const endrollLines = text.split('\n');
                     let lineIndex = 0;
+
+                    // Add the formatted date to the beginning of the endroll content
+                    endrollLines.unshift(`Date: ${formattedDate}`);
 
                     function displayNextLine() {
                         if (lineIndex < endrollLines.length) {
