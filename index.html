@@ -50,11 +50,15 @@
                 // Clear the content and make the page black when the user interacts.
                 document.addEventListener("click", clearContent);
                 document.addEventListener("keydown", clearContent);
+                displayEndroll();
                 return;
             }
         }
     </script>
-    <script>
+
+    <script>    
+        // Load endroll content from endroll.txt using a Fetch API.
+
         // Function to display the content of endroll.txt.
         function displayEndroll() {
             fetch('endroll.txt')
@@ -75,6 +79,7 @@
                 });
             }
     </script>
+
     <script>        
         // Function to clear the content and make the page black.
         function clearContent() {

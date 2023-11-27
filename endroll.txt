@@ -1,4 +1,3 @@
-E< !!! WARNING !!! >
-E< CLOSING CONNECTION......>
-E< -- PROJECT: ANIMA LU'Z: Chapter 5 --   > 
-E< -- Written by XX --- >
+THIS IS ENDROLL 1 
+THIS IS ENDROLL 2
+THIS IS ENDROLL 3
