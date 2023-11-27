@@ -91,7 +91,7 @@
 
                     function displayNextLine() {
                         if (lineIndex < endrollLines.length) {
-                            novelText.textContent += endrollLines[lineIndex] + '\n';
+                            novelText.innerHTML += endrollLines[lineIndex] + '<br>';
                             lineIndex++;
                             setTimeout(displayNextLine, 30);
                         }
