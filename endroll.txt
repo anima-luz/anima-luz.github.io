@@ -7,7 +7,7 @@ KeyError: 'cart_no11'
 < !!! WARNING !!! >
 < CLOSING CONNECTION......>
 < -- PROJECT: ANIMA LU'Z: Chapter 5 --   > 
-<For more info: <p><a href=”https://projectanimaluz.wixsite.com/projecthome”>PROJECT: ANIMA LU'Z Official Site</a></p>>
+For more info: https://projectanimaluz.wixsite.com/projecthome 
 
 < -- Written by XX --- >
 < -- Story & Program by B.Billy -- >
