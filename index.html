@@ -30,7 +30,7 @@
                 if (endFlag === 0){
                     displayNextChar();
                 } else {
-                    displayEndroll();
+                    // displayEndroll();
                     clearContent();
                     return;
                 }
@@ -55,10 +55,9 @@
                 }
             } else {
                 // Display Endroll.
-                document.addEventListener("click", clearContent);
-                document.addEventListener("keydown", clearContent);
-                // displayEndroll();
-                return;
+                // document.addEventListener("click", clearContent);
+                // document.addEventListener("keydown", clearContent);
+                displayEndroll();
             }
         }
     </script>
