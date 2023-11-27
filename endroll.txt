@@ -3,3 +3,8 @@ Traceback (most recent call last):
   File "Central_Station.py", line 5, in <module>
     Danger["cart_no11"]
 KeyError: 'cart_no11'
+
+< !!! WARNING !!! >
+< CLOSING CONNECTION......>
+< -- PROJECT: ANIMA LU'Z: Chapter 5 --   > 
+< -- Written by XX --- >
