@@ -1,14 +1,3 @@
-<script>
-            // Calculate the date one week ahead of the current date
-            const currentDate = new Date();
-            const oneWeekAhead = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
-
-            // Format the date as you want (e.g., "YYYY-MM-DD")
-            const formattedDate = `${oneWeekAhead.getFullYear()}-${(oneWeekAhead.getMonth() + 1).toString().padStart(2, '0')}-${oneWeekAhead.getDate().toString().padStart(2, '0')}`;
-</script>
-
-`${formattedDate}T02:03:00Z 0 [Warning] [B4-ITS2L8] [Therianthropes] HIGH SECURITY RISKS; YOU MAY BE TRACKED DOWN SOON. `
-
 ## Python Error Message 
 Traceback (most recent call last):
   File "Central_Station.py", line 5, in <module>
@@ -18,8 +7,9 @@ KeyError: 'cart_no11'
 < !!! WARNING !!! >
 < CLOSING CONNECTION......>
 < -- PROJECT: ANIMA LU'Z: Chapter 5 --   > 
-For more info: <a href="https://projectanimaluz.wixsite.com/projecthome"> 
+For more info: <a href="https://projectanimaluz.wixsite.com/projecthome" > Project: ANIMA LU'Z Official Site</a>
 
 < -- Written by XX --- >
 < -- Story & Program by B.Billy -- >
-<a href="https://twitter.com/sugarysilence">
+<a href="https://twitter.com/sugarysilence">B.Billy Twitter</a>
+<a href="https://www.youtube.com/channel/UCh5ujJd82NrfJJR6Sjmgxzw">B.Billy YouTube</a>
