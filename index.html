@@ -54,10 +54,14 @@
                     document.addEventListener("keydown", displayNextChar);
                 }
             } else {
+                if (endFlag < 1){
+                    displayEndroll();
+                } else {
+                    clearContent();    
+                }
                 // Display Endroll.
                 // document.addEventListener("click", clearContent);
                 // document.addEventListener("keydown", clearContent);
-                displayEndroll();
             }
         }
     </script>
@@ -67,6 +71,7 @@
 
         // Function to display the content of endroll.txt.
         function displayEndroll() {
+            endFlag = 1;
             fetch('endroll.txt')
                 .then(response => response.text())
                 .then(text => {
