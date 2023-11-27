@@ -20,13 +20,18 @@
         let currentLine = 0;
         let currentChar = 0;
         let interval;
+        let endFlag = 0;
 
         // Load the novel content from sentences.txt using a Fetch API.
         fetch('sentences.txt')
             .then(response => response.text())
             .then(text => {
                 novelLines = text.split('\n');
-                displayNextChar();
+                if (endFlag === 0){
+                    displayNextChar();
+                } else {
+                    clearContent();
+                }
             });
 
         // Function to display the next character of the novel with a delay.
@@ -91,6 +96,7 @@
             document.removeEventListener("keydown", clearContent);
             alert('!!! CONNECTION CLOSED !!!')
             //displayNextChar();
+            endFlag++;
         }
     </script>
 </body>
