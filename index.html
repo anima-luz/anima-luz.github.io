@@ -20,13 +20,20 @@
         let currentLine = 0;
         let currentChar = 0;
         let interval;
+        let endFlag = 0;
 
         // Load the novel content from sentences.txt using a Fetch API.
         fetch('sentences.txt')
             .then(response => response.text())
             .then(text => {
                 novelLines = text.split('\n');
-                displayNextChar();
+                if (endFlag === 0){
+                    displayNextChar();
+                } else {
+                    // displayEndroll();
+                    clearContent();
+                    return;
+                }
             });
 
         // Function to display the next character of the novel with a delay.
@@ -47,22 +54,55 @@
                     document.addEventListener("keydown", displayNextChar);
                 }
             } else {
-                // Clear the content and make the page black when the user interacts.
-                document.addEventListener("click", clearContent);
-                document.addEventListener("keydown", clearContent);
+                if (endFlag < 1){
+                    displayEndroll();
+                } else {
+                    clearContent();    
+                }
+                // Display Endroll.
+                // document.addEventListener("click", clearContent);
+                // document.addEventListener("keydown", clearContent);
             }
         }
+    </script>
 
+    <script>    
+        // Load endroll content from endroll.txt using a Fetch API.
+
+        // Function to display the content of endroll.txt.
+        function displayEndroll() {
+            endFlag = 1;
+            fetch('endroll.txt')
+                .then(response => response.text())
+                .then(text => {
+                    const endrollLines = text.split('\n');
+                    let lineIndex = 0;
+
+                    function displayNextLine() {
+                        if (lineIndex < endrollLines.length) {
+                            novelText.textContent += endrollLines[lineIndex] + '\n';
+                            lineIndex++;
+                            setTimeout(displayNextLine, 10);
+                        }
+                    }
+
+                    displayNextLine();
+                });
+            }
+    </script>
+
+    <script>        
         // Function to clear the content and make the page black.
         function clearContent() {
             novelText.textContent = '';
             document.body.style.backgroundColor = 'black';
             //currentLine = 0;
             //currentChar = 0;
+            alert('!!! CONNECTION CLOSED !!!')
             document.removeEventListener("click", clearContent);
             document.removeEventListener("keydown", clearContent);
-            alert('!!! CONNECTION CLOSED !!!')
             //displayNextChar();
+            endFlag++;
         }
     </script>
 </body>
