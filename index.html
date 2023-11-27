@@ -87,13 +87,13 @@
                     let lineIndex = 0;
 
                     // Add the formatted date to the beginning of the endroll content
-                    endrollLines.unshift(`Date: ${formattedDate}`);
+                    endrollLines.unshift(`${formattedDate}T02:03:00Z 0 [Warning] [B4-ITS2L8] [Therianthropes] HIGH SECURITY RISKS; YOU MAY BE TRACKED DOWN SOON. `);
 
                     function displayNextLine() {
                         if (lineIndex < endrollLines.length) {
                             novelText.textContent += endrollLines[lineIndex] + '\n';
                             lineIndex++;
-                            setTimeout(displayNextLine, 10);
+                            setTimeout(displayNextLine, 30);
                         }
                     }
 

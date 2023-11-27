@@ -1,6 +1,3 @@
-{列車の時刻)} 0 [Warning] [B4-ITS2L8]  [Therianthropes] <<何か良い感じのエラーメッセージ風文章>>
-
-
 ## Python Error Message 
 Traceback (most recent call last):
   File "Central_Station.py", line 5, in <module>
